@@ -13,12 +13,14 @@ app = Flask(__name__)
 
 
 @app.route("/")
+@cross_origin
 def HomePage():
     print("Home Page Fetched")
     return render_template("index.html")
 
 
 @app.route("/review", methods=["POST", "GET"])
+@cross_origin
 def review():
     if request.method == "POST":
         try:
