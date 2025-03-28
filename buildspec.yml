@@ -14,9 +14,14 @@ phases:
 
   post_build:
     commands:
-      - echo Build completed successfully!
+      - echo Packaging the application for deployment...
+      - zip -r deployment-package.zip .
+      - echo Build and packaging completed successfully!
 
 artifacts:
   files:
-    - '**/*'
-  discard-paths: yes
+    - deployment-package.zip
+
+cache:
+  paths:
+    - /root/.cache/pip
