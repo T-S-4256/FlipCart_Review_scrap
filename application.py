@@ -193,5 +193,3 @@ def review_page():
 
 logging.shutdown()
 
-if __name__ == "__main__":
-    app.run()
