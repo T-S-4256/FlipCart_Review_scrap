@@ -3,25 +3,17 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.8
+      python: 3.9
     commands:
       - echo Installing dependencies...
+      - echo "Starting Build"
       - pip install -r requirements.txt
+      - python -m unittest discover tests
 
   build:
     commands:
-      - echo Building the Flask app...
-
-  post_build:
-    commands:
-      - echo Packaging the application for deployment...
-      - zip -r deployment-package.zip .
-      - echo Build and packaging completed successfully!
+      - echo Build completed on `date`
 
 artifacts:
   files:
-    - deployment-package.zip
-
-cache:
-  paths:
-    - /root/.cache/pip
+    - '**/*' 
