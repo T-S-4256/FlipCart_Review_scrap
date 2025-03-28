@@ -3,4 +3,4 @@ phases:
     commands:
       - echo "Starting Build"
       - pip install -r requirements.txt
-      - python -m unittest discover tests
+      - python -m unittest discover -s tests
