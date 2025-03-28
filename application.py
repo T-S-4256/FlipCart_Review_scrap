@@ -55,7 +55,7 @@ def review_page():
 
             # SAVE THE DATA INTO A CSV FILE
             # FILE NAME WITH SPECIFIC LOCATION
-            fileName = os.path.join(os.getcwd(), f"{searchString}.csv")
+            fileName = os.path.join(os.getcwd(), "ScrapData", f"{searchString}.csv")
             file_exists = os.path.isfile(fileName)
 
             # DEFINE HEADING FOR THE CSV FILE
@@ -81,7 +81,7 @@ def review_page():
                 try:
                     reqData = requests.get(link)
                 except Exception as e:
-                    print("Invalid Link Generated : ", e)
+                    logging.info(e)
                     # SET THE ENCOADING
                 reqData.encoding = "utf-8"
 
@@ -89,14 +89,14 @@ def review_page():
                 try:
                     reqHTML = bs(reqData.text, "html.parser")
                 except Exception as e:
-                    print("Unable to Parse the reqData : ", e)
+                    logging.info(e)
 
                     # FETCH THE ALL DATA OF REVIEW
                 try:
                     reviewContainer = "No Review"
                     reviewContainer = reqHTML.find_all("div", {"class": "RcXBOT"})
                 except Exception as e:
-                    print("No Review Found : ", e)
+                    logging.info(e)
 
                     # FETCH THE PRODUCT NAME
                 try:
@@ -107,7 +107,7 @@ def review_page():
                         )
                     ).text
                 except Exception as e:
-                    print("No Product Name Found : ", e)
+                    logging.info(e)
 
                 # FETCH ALL THE DATA OF THE REVIEW ONE BY ONE
                 for i in reviewContainer:
@@ -117,7 +117,7 @@ def review_page():
                         name = "No Name"
                         name = (i.div.div.find("p", {"class": "_2NsDsF AwS1CA"})).text
                     except Exception as e:
-                        print("No Reviewer Name : ", e)
+                        logging.info(e)
 
                     # FETCH THE COMMENT OF THE REVIEW
                     try:
@@ -126,7 +126,7 @@ def review_page():
                             i.div.div.find("div", {"class": "ZmyHeo"}).div.div
                         ).text
                     except Exception as e:
-                        print("No Review Written : ", e)
+                        logging.info(e)
 
                     # FETCH THE RATING OF THE REVIEW
                     try:
@@ -135,14 +135,14 @@ def review_page():
                             i.div.div.find("div", {"class": "XQDdHH Ga3i8K"})
                         ).text
                     except Exception as e:
-                        print("No Rating Given : ", e)
+                        logging.info(e)
 
                     # FETCH THE HAED TAG OF THE REVIEW
                     try:
                         headTag = "No HeadTag"
                         headTag = (i.div.div.find("p", {"class": "z9E0IG"})).text
                     except Exception as e:
-                        print("No HeadTag Found : ", e)
+                        logging.info(e)
 
                     # CREATE A DICTIONARY AND STORE THE DATA INTO THE DICTIONARY
                     my_dict = {
@@ -158,136 +158,6 @@ def review_page():
                     # APPEND THE DATA INTO THE CSV FILE
                     fw.write(f"{ProductName}, {name}, {review}, {headTag}, {rating}\n")
 
-                # # OPEN ALL THE ITEMS ONE BY ONE
-                """
-                for i in dataContainer:
-                    # GENERATING THE LINK
-                    link = "https://www.flipkart.com" + i.div.div.div.a["href"]
-                    # OPEN THE LINK TO GET THA DATA
-                    try:
-                        reqData = requests.get(link)
-                    except Exception as e:
-                        print("Invalid Link Generated : ", e)
-                    # SET THE ENCOADING
-                    reqData.encoding = "utf-8"
-                    # CONVERT INTO THE HTML TEXT
-                    try:
-                        reqHTML = bs(reqData.text, "html.parser")
-                    except Exception as e:
-                        print("Unable to Parse the reqData : ", e)
-                    # FETCH THE ALL DATA OF REVIEW
-                    try:
-                        reviewContainer = "No Review"
-                        reviewContainer = reqHTML.find_all("div", {"class": "RcXBOT"})
-                    except Exception as e:
-                        print("No Review Found : ", e)
-
-                    # FETCH NAME WHO GAVE THE REVIEW
-                    try:
-                        name = "No Name"
-                        name = (
-                            reviewContainer[0].div.div.find(
-                                "p", {"class": "_2NsDsF AwS1CA"}
-                            )
-                        ).text
-                    except Exception as e:
-                        print("No Reviewer Name : ", e)
-
-                    # FETCH THE COMMENT OF THE REVIEW
-                    try:
-                        review = "No Review"
-                        review = (
-                            reviewContainer[0]
-                            .div.div.find("div", {"class": "ZmyHeo"})
-                            .div.div
-                        ).text
-                    except Exception as e:
-                        print("No Review Written : ", e)
-
-                    # FETCH THE RATING OF THE REVIEW
-                    try:
-                        rating = "0"
-                        rating = (
-                            reviewContainer[0].div.div.find(
-                                "div", {"class": "XQDdHH Ga3i8K"}
-                            )
-                        ).text
-                    except Exception as e:
-                        print("No Rating Given : ", e)
-
-                    # FETCH THE HAED TAG OF THE REVIEW
-                    try:
-                        headTag = "No HeadTag"
-                        headTag = (
-                            reviewContainer[0].div.div.find("p", {"class": "z9E0IG"})
-                        ).text
-                    except Exception as e:
-                        print("No HeadTag Found : ", e)
-
-                    # FETCH THE PRODUCT NAME
-                    try:
-                        ProductName = searchString
-                        ProductName = (
-                            (reqHTML.find("div", {"class": "cPHDOP col-12-12"})).div.find(
-                                "span", {"class": "VU-ZEz"}
-                            )
-                        ).text
-                        print("Product Name : ", ProductName)
-                    except Exception as e:
-                        print("No Product Name Found : ", e)
-
-                    # SAVE ALL THE DATA INTO A FILE USING LOGGING
-                    logging.basicConfig(filename="flipcartData.txt", level=logging.INFO)
-                    data = (
-                        "Product Name : "
-                        + ProductName
-                        + " Name : "
-                        + name
-                        + " Review : "
-                        + review
-                        + " Rating : "
-                        + rating
-                        + " HeadTag : "
-                        + headTag
-                    )
-                    logging.info(data)
-                
-                    FIRST ITEM LINK FOR OPEN
-                    resultLink="https://www.flipkart.com"+dataContainer[0].div.div.div.a['href']
-                    OPEN THE FIRST ITEM
-                    resultReq=requests.get(resultLink)
-                    SET ENCOADING
-                    resultReq.encoding='urf-8'
-                    CONVERT INTO HTML TEXT
-                    result_HTML=bs(resultReq.text,'html.parser')
-                    FETCHING THE FEEDBACK OF FIRST ITEM
-                    ReviewContainer = result_HTML.find_all("div", {"class": "RcXBOT"})
-                    print("The Length Of The Review : ", len(ReviewContainer))
-                    firstName = (
-                        ReviewContainer[0].div.div.find("p", {"class": "_2NsDsF AwS1CA"})
-                    ).text
-                    firstReview = (
-                        ReviewContainer[0].div.div.find("div", {"class": "ZmyHeo"}).div.div
-                    ).text
-                    firstRating = (
-                        ReviewContainer[0].div.div.find("div", {"class": "XQDdHH Ga3i8K"})
-                    ).text
-                    print("Rating : ", firstRating, " Review : ", firstReview)
-
-                    SAVE THE LINK OF ALL THE RESULTANT DATA USING LOGGING
-                    logging.basicConfig(filename="flipcartData.txt", level=logging.INFO)
-                    for i in dataContainer:
-                    resultLink="https://www.flipkart.com"+i.div.div.div.a['href']
-                    data = (
-                        "Name : "
-                        + firstName
-                        + " Review : "
-                        + firstReview
-                        + " Rating : "
-                        + firstRating
-                    )
-                    logging.info(data)
-                """
                 # SAVE THE DATA INTO THE DATABASE
                 try:
                     mongo_url = os.getenv("MONGO_URL")
@@ -319,10 +189,9 @@ def review_page():
 
         except Exception as e:
             logging.info(e)
-            print("Error Occured : ", e)
 
 
 logging.shutdown()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run()

@@ -1,0 +1,83 @@
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:17:50] "POST /review HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:17:50] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:20:31] "POST /review HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:20:31] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:root:[Errno 2] No such file or directory: 'D:\\ScrapData\\iphone11.csv'
+ERROR:application:Exception on /review [POST]
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\decorator.py", line 121, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\helpers.py", line 185, in make_response
+    return current_app.make_response(args)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1212, in make_response
+    raise TypeError(
+TypeError: The view function for 'review' did not return a valid response. The function either returned None or ended without a return statement.
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:22:46] "[35m[1mPOST /review HTTP/1.1[0m" 500 -
+INFO:root:[Errno 2] No such file or directory: 'D:/ScrapData/iphone11.csv'
+ERROR:application:Exception on /review [POST]
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\decorator.py", line 121, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\helpers.py", line 185, in make_response
+    return current_app.make_response(args)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1212, in make_response
+    raise TypeError(
+TypeError: The view function for 'review' did not return a valid response. The function either returned None or ended without a return statement.
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:23:40] "[35m[1mPOST /review HTTP/1.1[0m" 500 -
+INFO:root:[Errno 2] No such file or directory: 'D:/ScrapData/iphone11.csv'
+ERROR:application:Exception on /review [POST]
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\decorator.py", line 121, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\helpers.py", line 185, in make_response
+    return current_app.make_response(args)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1212, in make_response
+    raise TypeError(
+TypeError: The view function for 'review' did not return a valid response. The function either returned None or ended without a return statement.
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:25:39] "[35m[1mPOST /review HTTP/1.1[0m" 500 -
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:26:58] "POST /review HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:26:58] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:root:'NoneType' object has no attribute 'div'
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:27:52] "POST /review HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Mar/2025 17:27:52] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
