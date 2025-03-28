@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>FlipCart Result Page</title>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/main.css') }}"
+/>
+{% endblock %} 
+
+{% block body %}
+<div class="main_wrapper">
+  <table class="table_wrapper">
+    <thead>
+      <tr class="Row Head">
+        <th class="data">Product Name</th>
+        <th class="data">Reviewer Name</th>
+        <th class="data">Comment</th>
+        <th class="data">Head Tag</th>
+        <th class="data">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for review in Reviews%}
+      <tr class="Row">
+        <td class="data">{{review['ProductName']}}</td>
+        <td class="data">{{review['Name']}}</td>
+        <td class="data">{{review['Comment']}}</td>
+        <td class="data">{{review['HeadTag']}}</td>
+        <td class="data">{{review['Rating']}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
